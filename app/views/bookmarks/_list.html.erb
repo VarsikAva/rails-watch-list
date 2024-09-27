@@ -1,0 +1,9 @@
+<div class="list">
+  <h2><%= list.name %></h2>
+
+  <%= link_to "Add Bookmark", new_list_bookmark_path(list) %>
+
+  <% list.bookmarks.each do |bookmark| %>
+    <%= render "bookmarks/bookmark", bookmark: bookmark %>
+  <% end %>
+</div>

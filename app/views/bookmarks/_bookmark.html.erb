@@ -1,0 +1,5 @@
+<div class="bookmark">
+  <p><%= bookmark.comment %></p>
+  <p><%= bookmark.movie.title %></p>
+  <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
+</div>
