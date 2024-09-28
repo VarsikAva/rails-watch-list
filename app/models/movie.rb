@@ -1,15 +1,13 @@
 class Movie < ApplicationRecord
   validates :title, :overview, presence: true, uniqueness: true
-  validates :title, uniqueness: true
-  validates :rating, numericality: { in: 0..10 }
   has_many :bookmarks, dependent: :restrict_with_error
-  validate :has_no_bookmarks, on: :destroy
+  validate :no_bookmarks_exist
 
   private
 
-  def has_no_bookmarks
+  def no_bookmarks_exist
     if bookmarks.any?
-      errors.add(:base, "Cannot destroy movie with associated bookmarks")
+      errors.add(:base, "Cannot delete movie with associated bookmarks")
     end
   end
 end
